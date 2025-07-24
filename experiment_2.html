@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Online Attendance Form</title>
+        <style>
+            div {
+                margin: 2rem;
+            }
+            * {
+                background-color:beige;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!--form container begins-->
+        <div class="form_container">
+            <form action="save.php" method="post"> 
+                <div class="title">
+                    <h1>Online Attendance Form</h1>
+                </div>
+
+                <div class="form_body">
+
+                    <fieldset>
+                    <!--each div's class specifies their function-->
+                    <div class="name">
+                        <label for="name">Student Name:</label>
+                        <input type="text" id="name" name="name">
+                        <br>
+                    </div>    
+
+                    <div class="register_number">
+                        <label for="register_number">Register Number:</label>
+                        <input type="text" id="register_number" name="register_number">
+                        <br>
+                    </div>
+
+                    <div class="department">
+                        <label for="department">Choose your department:</label>
+                        <select id="department" name="department" size="3">
+                            <option value="B.Tech CSE">B.Tech CSE</option>
+                            <option value="B.Tech AIML">B.Tech AIML</option>
+                            <option value="B.Tech AIDS">B.Tech AIDS</option>
+                            <option value="M.Tech CSE">M.Tech CSE</option>
+                            <option value="M.Tech AIML">M.Tech AIML</option>
+                        </select>
+                    </div>
+
+                    <div class="email_password">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+
+                    <div class="phone">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="date">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                    <div class="subject_name">
+                        <input type="radio" id="web_technology" name="course_name" value="Web Technology">
+                        <label for="web_technology">Web Technology</label>
+
+                        <input type="radio" id="DBMS" name="course_name" value="DBMS">
+                        <label for="DBMS">DBMS</label>
+
+                        <input type="radio" id="datascience" name="course_name" value="Data Science">
+                        <label for="datascience">Data Science</label>
+                    </div>
+
+                    <div class="subject_number">
+                        <label for="subject_number">Subject Code: </label>
+                        <input type="number" id="subject_number" name="subject_number" value="">
+                    </div>
+
+                    <div class="checkbox">
+                        <p>Session Attended :</p>
+
+                        <input type="checkbox" name="session_morning" id="checkbox1" value="Morning">
+                        <label for="checkbox1">Morning</label>
+
+                        <input type="checkbox" name="session_afternoon" id="checkbox2" value="Afternoon">
+                        <label for="checkbox2">Afternoon</label>
+                    </div>
+
+                    <div class="feedback">
+                        <label for="feedback">Feedback on class</label>
+                        <textarea name="feedback" id="feedback"></textarea>
+                    </div>
+
+                    <div class="external link: Karunya">
+                        <a href="https://studentportal.eduserve.app/login" target="_blank" rel="noopener">Attendance summary</a>
+                    </div>
+
+                    <div class="submit_form">
+                        <input type="submit" name="submit" id="submitButton">
+                        <label for="submitButton">Submit</label>
+
+                        <input type="reset" name="reset" id="resetButton">
+                        <label for="resetButton">Reset form</label>
+                    </div>
+
+                    <div class="search">
+                        <search>
+                            <label for="search_element">type here to search</label>
+                            <input type="search" name="search_element" id="search_element">
+                        </search>
+                    </div>                    
+                    </fieldset>
+
+                    <div class="medical_leave">
+                        <h3>To apply for Medical Leave</h3>
+
+                        <label for="MLfile">Upload your ML Certificate here</label>
+                        <input type="file" id="MLfile" name="MLfile">
+
+                        <label for="MLfileStatus">Upload Status</label>
+                        <progress id="MLfileStatus" value="10" max="100">0%</progress>
+                    </div>
+
+                </div>
+            </form>
+            <!--form container ends-->
+        </div>
+    </body>
+</html>
