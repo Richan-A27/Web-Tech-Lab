@@ -1,0 +1,150 @@
+/* Global Styles */
+body {
+    background: linear-gradient(to bottom right, bisque, cornsilk);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    margin: 2;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px gray;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: dimgray;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: saddlebrown;
+}
+
+/* Navigation Links */
+a {
+    text-decoration: none;
+    color: sienna;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    color: chocolate;
+    transform: scale(1.1);
+}
+
+/* Recipe Card Styling */
+#newyear, #easter, #christmas, #diwali {
+    background-color: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px darkgray;
+    transition: transform 0.3s ease;
+    opacity: 0.95;
+}
+
+#newyear:hover, #easter:hover, #christmas:hover, #diwali:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+/* Recipe Images */
+img {
+    border-radius: 12px;
+    box-shadow: 0 3px 8px gray;
+    transition: opacity 0.3s ease;
+}
+
+img:hover {
+    opacity: 0.9;
+}
+
+/* Ingredients & Preparation Lists */
+ul, ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+ul li, ol li {
+    margin-bottom: 5px;
+}
+
+/* Recipe Table Styling */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    background-color: floralwhite;
+    box-shadow: 0 4px 10px darkgray;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid burlywood;
+}
+
+th {
+    background-color: peru;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    background-color: blanchedalmond;
+    font-weight: 500;
+}
+
+/* Responsive Grid Layout */
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #newyear, #easter, #christmas, #diwali {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Flexbox Navigation */
+div:nth-child(3) p {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Hover Lift Effect */
+#newyear:hover, #easter:hover, #christmas:hover, #diwali:hover {
+    box-shadow: 0 8px 20px gray;
+}
+
+/* Rounded Borders for Tables */
+table, th, td {
+    border-radius: 5px;
+}
