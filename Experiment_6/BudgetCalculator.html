@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget calculator App</title>
+
+    <script src="jquery-3.7.1.min"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#evaluatebtn').click(function(){
+
+                let Amount = parseFloat($('amount').val())
+                if (isNaN(Amount)){
+                    alert("Enter a valid Amount")
+                    return
+                }
+
+                let Room_Rent =  (parseFloat($('#roomrent').val()) / 100 ) * Amount
+                let Accessories = (parseFloat($('accessories').val()) / 100 ) * Amount
+                let Emergency = (parseFloat($('#emergency').val()) / 100 ) * Amount
+                let Savings = (parseFloat($('savings').val()) / 100 ) * Amount
+
+                $('#rentroom_output').html(Room_Rent)
+                $('#accessories_output').html(Accessories)
+                $('#emergency_output').html(Emergency)
+                $('#savings_output').html(Savings)
+                
+            })
+        })
+    </script>
+</head>
+<body>
+    <div #frame>
+        <div class="title">
+            <h1>Budget calculator App</h1>            
+        </div>
+
+        <div class="main">
+            <div class="input">
+                <label for="Amount">Enter the amount to manage your Budget</label>
+                <input type="text" id="amount">
+
+                <div class="parameters">
+                    <h3>How would you like to divide your money ?</h3>
+
+                    <label for="Room Rent">Room Rent</label>
+                    <input type="text" id="roomrent">
+
+                    <label for="Accessories">Accessories</label>
+                    <input type="text" id="accessories">
+
+                    <label for="Emergency">Emergency</label>
+                    <input type="text" id="emergency">
+
+                    <label for="Savings">Savings</label>
+                    <input type="text" id="savings">
+
+                    <button id="evaluatebtn">Evaluate My Money</button>
+                    
+                </div>
+            </div>
+
+            <div class="output">
+                <div id="rentroom_output"></div>
+                <div id="accessories_output"></div>
+                <div id="emergency_output"></div>
+                <div id="savings_output"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
