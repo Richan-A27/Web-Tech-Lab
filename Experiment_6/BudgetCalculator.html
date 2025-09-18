@@ -1,75 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget calculator App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Calculator App</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="jquery-3.7.1.min"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: lavender;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-    <script>
-        $(document).ready(function(){
-            $('#evaluatebtn').click(function(){
+    #frame {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px gray;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
 
-                let Amount = parseFloat($('amount').val())
-                if (isNaN(Amount)){
-                    alert("Enter a valid Amount")
-                    return
-                }
+    .title h1 {
+      color: navy;
+      margin-bottom: 20px;
+    }
 
-                let Room_Rent =  (parseFloat($('#roomrent').val()) / 100 ) * Amount
-                let Accessories = (parseFloat($('accessories').val()) / 100 ) * Amount
-                let Emergency = (parseFloat($('#emergency').val()) / 100 ) * Amount
-                let Savings = (parseFloat($('savings').val()) / 100 ) * Amount
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
 
-                $('#rentroom_output').html(Room_Rent)
-                $('#accessories_output').html(Accessories)
-                $('#emergency_output').html(Emergency)
-                $('#savings_output').html(Savings)
-                
-            })
-        })
-    </script>
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      border: 1px solid gray;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .parameters {
+      margin-top: 20px;
+    }
+
+    .parameters h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: black;
+    }
+
+    .parameters input {
+      width: 80px;
+      display: inline-block;
+      margin: 0 8px 20px 8px;
+    }
+
+    button {
+      background: navy;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: darkblue;
+    }
+
+    .output {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .output div {
+      background: whitesmoke;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 3px 6px lightgray;
+    }
+
+    #rentroom_output { color: red; }
+    #accessories_output { color: green; }
+    #emergency_output { color: orange; }
+    #savings_output { color: blue; }
+  </style>
 </head>
 <body>
-    <div #frame>
-        <div class="title">
-            <h1>Budget calculator App</h1>            
-        </div>
-
-        <div class="main">
-            <div class="input">
-                <label for="Amount">Enter the amount to manage your Budget</label>
-                <input type="text" id="amount">
-
-                <div class="parameters">
-                    <h3>How would you like to divide your money ?</h3>
-
-                    <label for="Room Rent">Room Rent</label>
-                    <input type="text" id="roomrent">
-
-                    <label for="Accessories">Accessories</label>
-                    <input type="text" id="accessories">
-
-                    <label for="Emergency">Emergency</label>
-                    <input type="text" id="emergency">
-
-                    <label for="Savings">Savings</label>
-                    <input type="text" id="savings">
-
-                    <button id="evaluatebtn">Evaluate My Money</button>
-                    
-                </div>
-            </div>
-
-            <div class="output">
-                <div id="rentroom_output"></div>
-                <div id="accessories_output"></div>
-                <div id="emergency_output"></div>
-                <div id="savings_output"></div>
-            </div>
-
-        </div>
+  <div id="frame">
+    <div class="title">
+      <h1>Budget Calculator App</h1>            
     </div>
+
+    <div class="main">
+      <div class="input">
+        <label for="amount">Enter Amount to Manage</label>
+        <input type="text" id="amount" placeholder="Enter total budget">
+
+        <div class="parameters">
+          <h3>How would you like to divide your money?</h3>
+
+          <label for="roomrent">Room Rent(%)</label>
+          <input type="text" id="roomrent">
+
+          <label for="accessories">Accessories(%)</label>
+          <input type="text" id="accessories">
+
+          <label for="emergency">Emergency(%)</label>
+          <input type="text" id="emergency">
+
+          <label for="savings">Saving(%)</label>
+          <input type="text" id="savings">
+
+          <br>
+          <button id="evaluatebtn">Evaluate My Money</button>
+        </div>
+      </div>
+
+      <div class="output">
+        <div id="rentroom_output"></div>
+        <div id="accessories_output"></div>
+        <div id="emergency_output"></div>
+        <div id="savings_output"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $('#evaluatebtn').click(function(){
+        let Amount = parseFloat($('#amount').val());
+        if (isNaN(Amount)){
+          alert("Enter a valid Amount");
+          return;
+        }
+
+        let Room_Rent = (parseFloat($('#roomrent').val()) / 100) * Amount;
+        let Accessories = (parseFloat($('#accessories').val()) / 100) * Amount;
+        let Emergency = (parseFloat($('#emergency').val()) / 100) * Amount;
+        let Savings = (parseFloat($('#savings').val()) / 100) * Amount;
+
+        $('#rentroom_output').html("Room Rent<br>Rs." + Room_Rent.toFixed(2));
+        $('#accessories_output').html("Accessories<br>Rs." + Accessories.toFixed(2));
+        $('#emergency_output').html("Emergency<br>Rs." + Emergency.toFixed(2));
+        $('#savings_output').html("Saving<br>Rs." + Savings.toFixed(2));
+      });
+    });
+  </script>
 </body>
 </html>
